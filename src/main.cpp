@@ -25,7 +25,6 @@ double getFreq()
 
 void fileOpen()
 {
-
     outputFile.open("outputlist");
 }
 
