@@ -4,3 +4,5 @@
 .ctagsd/
 *.workspace
 *.code-workspace
+src/outputlist
+src/main
