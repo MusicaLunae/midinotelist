@@ -1,52 +1,33 @@
 #include <iostream>
-#include <iomanip>
 #include <fstream>
-#include <cmath>
+#include <json/json.h>
 
-double baseFreq = 440.00;
-std::string noteNames[12] = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
-std::ofstream outputFile;
 
-double calculateFrequency(double noteNum, double baseFrequency)
+void readJsonTest()
 {
-    double exponent = ((noteNum - 69) / 12);
-    double freq = baseFrequency * pow(2, exponent);
-    return freq;
-}
-
-double getFreq()
-{
-    double frequency{};
-    std::cout << "Please enter the desired A4 frequency: ";
-    std::cin >> frequency;
-    std::cout << "\nYou entered: " << frequency << std::endl;
-    return frequency;
-}
-
-void fileOpen()
-{
-    outputFile.open("outputlist");
-}
-
-void calcerLoop()
-{
-    double baseFrequency = getFreq();
-    std::cout << "\n\n";
-    
-    for(int i = 0; i < 128; i++)
+    std::ifstream ifs("testfile.json");
+    Json::Reader reader;
+    Json::Value obj;
+    std::string defaultStartTable;
+    reader.parse(ifs, obj);
+    if (obj["generate-default-table-on-startup"].asBool() == 1)
     {
-        double freq {};
-        freq = calculateFrequency(i, baseFrequency);
-
-        outputFile << "Midi note number: " << i << "   =======   Frequency: " << std::fixed << std::setprecision(2) << freq << "Hz" << std::endl;
+        defaultStartTable = "true";
     }
+    else
+    {
+        defaultStartTable = "false";
+    }
+    std::cout << "A4-freq: " << obj["A4-freq"].asDouble() << "Hz" << std::endl;
+    std::cout << "generate default table on startup: " << obj["generate-default-table-on-startup"].asBool() << std::endl;
+    std::cout << "(this means that the setting is set to " << defaultStartTable << ")" << std::endl;
+
 }
 
-
-int main() 
+int main()
 {
-    fileOpen();
-    calcerLoop();
-    outputFile.close();
+
+    readJsonTest();
+
     return 0;
 }
