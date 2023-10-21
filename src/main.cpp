@@ -1,33 +1,35 @@
 #include <iostream>
-#include <fstream>
 #include <json/json.h>
 
+std::string noteNames[12] = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
 
-void readJsonTest()
+namespace CurrentNote
 {
-    std::ifstream ifs("testfile.json");
-    Json::Reader reader;
-    Json::Value obj;
-    std::string defaultStartTable;
-    reader.parse(ifs, obj);
-    if (obj["generate-default-table-on-startup"].asBool() == 1)
-    {
-        defaultStartTable = "true";
-    }
-    else
-    {
-        defaultStartTable = "false";
-    }
-    std::cout << "A4-freq: " << obj["A4-freq"].asDouble() << "Hz" << std::endl;
-    std::cout << "generate default table on startup: " << obj["generate-default-table-on-startup"].asBool() << std::endl;
-    std::cout << "(this means that the setting is set to " << defaultStartTable << ")" << std::endl;
+    int noteNumber{};
+    int pianoNote{};
+    std::string noteName{};
+    double frequency{};
+}
 
+Json::Value midiNoteGenerator(int midiNote)
+{
+    Json::Value midiNoteJson;
+    
+    return midiNoteJson;
+}
+
+void iterator()
+{
+    for (int i = 0; i < 128 ; i++)
+    {
+        
+    }
 }
 
 int main()
 {
 
-    readJsonTest();
+    iterator();
 
     return 0;
 }
