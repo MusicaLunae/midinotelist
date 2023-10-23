@@ -12,8 +12,6 @@
 
 void readJson()
 {
-    Settings::generateDefault = false;
-    std::cout << "generate default has been set to: " << Settings::generateDefault << std::endl;
     std::ifstream ifs("settings.json");
     Json::Reader settingsReader;
     Json::Value obj;
@@ -26,6 +24,8 @@ void readJson()
     {
         Settings::generateDefault = false;
     }
-    std::cout << "generate default has been set to: " << Settings::generateDefault << std::endl;
+
+    Settings::defaultA4Freq = obj["A4-freq"].asDouble();
+    std::cout << "defaultA4Freq: " << Settings::defaultA4Freq << std::endl;
 
 }
