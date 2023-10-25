@@ -10,4 +10,10 @@ namespace Settings
     extern bool generateDefault;
 };
 
+namespace Output
+{
+    extern double frequency;
+    extern Json::Value noteArray;
+};
+
 // #endif
