@@ -28,7 +28,10 @@ Json::Value midiNoteGenerator(int midiNote)
 Json::Value generateMidiNote(int note)
 {
     double baseFreq = 440.00;
-    CurrentNote::frequency = calculateFrequency((double)note, baseFreq);
+    std::cout << "note: ";
+    int mynote;
+    std::cin >> mynote;
+    CurrentNote::frequency = calculateFrequency((double)mynote, baseFreq);
     std::cout << "CurrentNote::frequency is: " << CurrentNote::frequency << std::endl;
     return note;
 }
@@ -42,7 +45,7 @@ void createNoteArray()
     {
         // midiNoteGenerator(i);
 
-        Json::Value noteArray[i] = generateMidiNote(i);
+        // Json::Value noteArray[i] = generateMidiNote(i);
 
         int j = i + 1;
     }
@@ -54,6 +57,7 @@ int main()
     // iterator();
 
     readJson();
+    generateMidiNote(65);
 
     return 0;
 }
