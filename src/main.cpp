@@ -1,7 +1,7 @@
 #include <iostream>
 #include <json/json.h>
 
-// #include "namespaces.h"
+#include "namespaces.h"
 #include "calculatefrequency.h"
 #include "readsettings.h"
 
@@ -17,35 +17,32 @@ namespace CurrentNote
     double frequency{};
 }
 
-/*
-Json::Value midiNoteGenerator(int midiNote)
-{
-    Json::Value allMidiNotes;
-    return allMidiNotes;
-}
-*/
+
 
 Json::Value generateMidiNote(int note)
 {
     double baseFreq = 440.00;
-    std::cout << "note: ";
-    int mynote;
-    std::cin >> mynote;
-    CurrentNote::frequency = calculateFrequency((double)mynote, baseFreq);
+    CurrentNote::frequency = calculateFrequency((double)note, baseFreq);
     std::cout << "CurrentNote::frequency is: " << CurrentNote::frequency << std::endl;
-    return note;
+
+    JsonValues::intermediateNote[note]["note number"] = note;
+
+    return JsonValues::intermediateNote;
 }
 
 
 
 void createNoteArray()
 {
+    std::string null = "null";
     int octaveNumber = -1;
     for (int i = 0; i < 128 ; i++)
     {
-        // midiNoteGenerator(i);
-
-        // Json::Value noteArray[i] = generateMidiNote(i);
+        if (i < 21)
+        {
+            JsonValues::noteArray[i]["note name"] = i;
+            // JsonValues::noteArray[i]["piano note"] = null.asNull();
+        }
 
         int j = i + 1;
     }

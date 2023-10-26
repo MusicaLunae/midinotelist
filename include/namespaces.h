@@ -4,6 +4,12 @@
 // #define NAMESPACES_H
 
 
+namespace JsonValues
+{
+    extern Json::Value intermediateNote;
+    extern Json::Value noteArray;
+}
+
 namespace Settings
 {
     extern double defaultA4Freq;
