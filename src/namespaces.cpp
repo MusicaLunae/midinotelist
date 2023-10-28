@@ -1,5 +1,13 @@
 #include <json/json.h>
 
+namespace CurrentNote
+{
+    int noteNumber{};
+    int pianoNote{};
+    std::string noteName{};
+    double frequency{};
+}
+
 namespace JsonValues
 {
     Json::Value intermediateNote;
@@ -10,10 +18,5 @@ namespace Settings
 {
     double defaultA4Freq{};
     bool generateDefault{};
-}
-
-namespace Output
-{
-    Json::Value noteArray;
-    double frequency{};
+    double baseFreq{};
 }

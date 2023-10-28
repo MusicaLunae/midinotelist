@@ -4,6 +4,15 @@
 // #define NAMESPACES_H
 
 
+namespace CurrentNote
+{
+    extern int noteNumber;
+    extern int pianoNote;
+    extern std::string noteName;
+    extern double frequency;
+}
+
+
 namespace JsonValues
 {
     extern Json::Value intermediateNote;
@@ -14,12 +23,6 @@ namespace Settings
 {
     extern double defaultA4Freq;
     extern bool generateDefault;
-};
-
-namespace Output
-{
-    extern double frequency;
-    extern Json::Value noteArray;
 };
 
 // #endif
