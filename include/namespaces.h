@@ -22,6 +22,7 @@ namespace JsonValues
 namespace Settings
 {
     extern double defaultA4Freq;
+    extern bool exitVar;
     extern bool generateDefault;
 };
 

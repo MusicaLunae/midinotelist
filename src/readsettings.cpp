@@ -10,14 +10,15 @@
     Settings::generateDefault
 } */
 
-void readJson()
+void readSettings()
 {
-    // open the settings file (JSON)
+    // Open the settings file (JSON)
     std::ifstream ifs("settings.json");
     Json::Reader settingsReader;
     Json::Value obj;
     settingsReader.parse(ifs, obj);
 
+    // Import the settings
     Settings::defaultA4Freq = obj["default-A4"].asDouble();
     std::cout << "Default A4 frequency: " << Settings::defaultA4Freq << std::endl;
     if (obj["generate-default"].asBool() == 1)

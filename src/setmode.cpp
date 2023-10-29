@@ -1,22 +1,48 @@
 #include <iostream>
+#include <string>
 
 int setMode()
 {
     char mode{};
-    std::cout << "\033[1;34mPlease select a mode: \033[0m";
-    std::cout << "'g': Generate a file" << std::endl;
-    std::cout << "'w': Write out a file" << std::endl;
+    std::cout << "\033[1;34mPlease select a mode: \033[0m" << std::endl;
+    std::cout << "\033[1m'g': Generate a file\033[0m" << std::endl;
+    std::cout << "\033[1m'w': Write out a file\033[0m" << std::endl;
+    std::cout << "\033[1m'x': Exit the program\033[0m" << std::endl;
 
     std::cin >> mode;
     int returnMode;
-    switch(mode)
+    
+    const std::string validModes = "gwx";
+    for (int i = 0; i < validModes.length(); i++)
     {
-        case 'g':
-            returnMode = 1;
+        if (validModes[i] == mode)
+        {
+            switch(mode)
+            {
+                case 'g':
+                    returnMode = 1;
+                    break;
 
-        case 'w':
-            returnMode = 2;
+                case 'w':
+                    returnMode = 2;
+                    break;
+
+                case 'x':
+                    returnMode = 3;
+                    break;
+            }
+            break;
+        }
+        else
+        {
+            returnMode = -1;
+            continue;
+        }
     }
-
     return returnMode;
+}
+
+void wrongInput()
+{
+    std::cout << "\033[1;31mInvalid input.\033[0m" << std::endl;
 }

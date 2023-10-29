@@ -20,27 +20,41 @@ void generateDefault()
         double baseFreq = Settings::defaultA4Freq;
         createNoteArray(baseFreq);
 
-        std::cout << "\033[1;31mFile generated.\033[0m";
+        std::cout << "\033[1;31mFile generated.\033[0m" << std::endl << std::endl;
     }
 }
 
 int main()
 {
-    readJson();
-    generateDefault();
+    Settings::exitVar = false;
 
-    int mode = setMode();
-    switch(mode)
+    do
     {
-        case 1:
-            generateDefault();
-        
-        case 2:
-            writeJsonArray(JsonValues::noteArray);
-    }
+        readSettings();
+        generateDefault();
 
-    std::cout << "JSON array: " << std::endl;
-    printJsonArray(JsonValues::noteArray);
-    writeJsonArray(JsonValues::noteArray);
+        int mode = setMode();
+        switch(mode)
+        {
+            case -1:
+                wrongInput();
+                break;
+            
+            case 3:
+                Settings::exitVar = true;
+                break;
+
+            case 1:
+                generateDefault();
+                break;
+            
+            case 2:
+                writeJsonArray(JsonValues::noteArray);
+                break;
+        }
+        continue;
+    }
+    while (Settings::exitVar == false);
+
     return 0;
 }

@@ -16,7 +16,8 @@ namespace JsonValues
 
 namespace Settings
 {
-    double defaultA4Freq{};
-    bool generateDefault{};
     double baseFreq{};
+    double defaultA4Freq{};
+    bool exitVar{};
+    bool generateDefault{};
 }

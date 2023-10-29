@@ -11,10 +11,15 @@ void createNoteArray(double baseFreq)
     int octaveNumber = -1;
     for (int i = 0; i < 128 ; i++)
     {
+        // Modulo is for iterating through the note list
+        // C is index (modulo) 0, B is index 11
         int modulo = i % 12;
         CurrentNote::pianoNote = i - 20;
 
         JsonValues::noteArray[i]["note number"] = i;
+
+        // Midi note 21 == piano note 1
+        // Piano notes run from 1 to 88 (including), or midi note 21 to 108 (including)
         if (i < 21)
         {
             JsonValues::noteArray[i]["piano note"] = null;
