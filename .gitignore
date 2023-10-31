@@ -7,3 +7,5 @@
 src/outputlist
 src/main
 tasksjson.json
+builds/
+tasks/

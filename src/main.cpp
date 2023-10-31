@@ -20,6 +20,7 @@ int main()
 {
     Settings::exitVar = false;
 
+    // main program loop
     do
     {
         readSettings();
