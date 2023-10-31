@@ -5,14 +5,17 @@ int setMode()
 {
     char mode{};
     std::cout << "\033[1;34mPlease select a mode: \033[0m" << std::endl;
-    std::cout << "\033[1m'g': Generate a file\033[0m" << std::endl;
+    std::cout << "\033[1m'c': Clear the generated note list\033[0m" << std::endl;
+    std::cout << "\033[1m'g': Generate a note list\033[0m" << std::endl;
+    std::cout << "\033[1m'p': Print out the generated note list\033[0m" << std::endl;
+    std::cout << "\033[1m'r': Read a note list from disk\033[0m" << std::endl;
     std::cout << "\033[1m'w': Write out a file\033[0m" << std::endl;
     std::cout << "\033[1m'x': Exit the program\033[0m" << std::endl;
 
     std::cin >> mode;
     int returnMode;
     
-    const std::string validModes = "gwx";
+    const std::string validModes = "gwxprc";
     for (int i = 0; i < validModes.length(); i++)
     {
         if (validModes[i] == mode)
@@ -29,6 +32,18 @@ int setMode()
 
                 case 'x':
                     returnMode = 3;
+                    break;
+
+                case 'p':
+                    returnMode = 4;
+                    break;
+
+                case 'r':
+                    returnMode = 5;
+                    break;
+                
+                case 'c':
+                    returnMode = 6;
                     break;
             }
             break;

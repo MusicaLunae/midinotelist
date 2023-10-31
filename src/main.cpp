@@ -12,17 +12,9 @@
 #include "printjsonarray.h"
 #include "writejsonarray.h"
 #include "setmode.h"
-
-void generateDefault()
-{
-    if (Settings::generateDefault == true)
-    {
-        double baseFreq = Settings::defaultA4Freq;
-        createNoteArray(baseFreq);
-
-        std::cout << "\033[1;31mFile generated.\033[0m" << std::endl << std::endl;
-    }
-}
+#include "getfrequency.h"
+#include "readjsonarray.h"
+#include "clearnotearray.h"
 
 int main()
 {
@@ -31,7 +23,12 @@ int main()
     do
     {
         readSettings();
-        generateDefault();
+        if (Settings::generateDefault == true)
+        {
+            double baseFreq = Settings::defaultA4Freq;
+            createDefaultArray(baseFreq);
+            std::cout << "\033[1;31mDefault note list generated.\033[0m" << std::endl << std::endl;
+        }
 
         int mode = setMode();
         switch(mode)
@@ -39,17 +36,30 @@ int main()
             case -1:
                 wrongInput();
                 break;
+
+            case 1: // generate the array (g)
+                createNoteArray(); 
+                std::cout << "\033[1;31mNote list generated.\033[0m\n" << std::endl;
+                break;
             
-            case 3:
+            case 2: // write the array to disk (w)
+                writeJsonArray(JsonValues::noteArray);
+                break;
+
+            case 3: // exit the program (x)
                 Settings::exitVar = true;
                 break;
 
-            case 1:
-                generateDefault();
+            case 4: // print the loaded/generated array (p)
+                printJsonArray(JsonValues::noteArray);
                 break;
-            
-            case 2:
-                writeJsonArray(JsonValues::noteArray);
+
+            case 5: // read an array from disk (r)
+                readJsonArray();
+                break;
+
+            case 6: // clear the currently loaded array (c)
+                clearNoteList(JsonValues::noteArray);
                 break;
         }
         continue;

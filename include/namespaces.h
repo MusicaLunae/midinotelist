@@ -17,6 +17,7 @@ namespace JsonValues
 {
     extern Json::Value intermediateNote;
     extern Json::Value noteArray;
+    extern Json::Value loadedList;
 }
 
 namespace Settings

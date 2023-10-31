@@ -5,7 +5,15 @@
 int writeJsonArray(Json::Value noteArray)
 {
     std::fstream writeOutput;
-    writeOutput.open("./notetable.json", std::fstream::out);
+    std::string filename;
+    std::cout << "\033[1mPlease specify a filename: \033[0m";
+    std::cin >> filename;
+
+    std::string fullPath = "./" + filename;
+
+    std::cout << "\nfull path: " << fullPath << std::endl;
+
+    writeOutput.open(fullPath, std::fstream::out);
     writeOutput << noteArray;
 
     writeOutput.close();

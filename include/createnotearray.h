@@ -1,3 +1,4 @@
 #pragma once
 
-void createNoteArray(double baseFreq);
+void createNoteArray();
+void createDefaultArray(double baseFreq);

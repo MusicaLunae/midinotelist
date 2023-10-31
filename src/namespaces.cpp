@@ -12,6 +12,7 @@ namespace JsonValues
 {
     Json::Value intermediateNote;
     Json::Value noteArray;
+    Json::Value loadedList;
 }
 
 namespace Settings
