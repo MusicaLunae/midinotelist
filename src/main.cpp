@@ -1,3 +1,8 @@
+#include <wx/wxprec.h>
+#ifndef WX_PRECOMP
+#   include <wx/wx.h>
+#endif
+
 #include <cmath>
 #include <fstream>
 #include <iomanip>
@@ -7,13 +12,7 @@
 // #include <sstream>
 // #include <stdlib.h>
 
-#include <wx/wxprec.h>
-#ifndef WX_PRECOMP
-#   include <wx/wx.h>
-#endif
-
-
-#include "namespaces.h"
+// #include "namespaces.h"
 // #include "createnotearray.h"
 // #include "calculatefrequency.h"
 // #include "readsettings.h"
@@ -367,5 +366,8 @@ IMPLEMENT_APP(MainApp)
 
 bool MainApp::OnInit()
 {
-    MainFrame *MainWin = new MainFrame(_T("MidiNoteList"))
+    MainFrame *MainWin = new MainFrame(_T("MidiNoteList"), wxPoint(1,1), wxSize(wxDefaultSize));
+    MainWin->Show(true);
+    SetTopWindow(MainWin);
+    return true;
 }
