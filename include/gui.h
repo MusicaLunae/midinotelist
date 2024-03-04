@@ -1,5 +1,10 @@
 #pragma once
 
+#include <wx/wxprec.h>
+#ifndef WX_PRECOMP
+#   include <wx/wx.h>
+#endif
+
 #ifndef __GUI_H
 #define __GUI_H
 

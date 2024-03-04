@@ -60,10 +60,10 @@
 				"${file}",
 				"-o",
 				"${fileDirname}/../builds/${fileBasenameNoExtension}",
-				"-ljsoncpp",
                 "-I../include/",
 				"`wx-config --cxxflags`",
-                "`wx-config --libs all`"
+                "`wx-config --libs all`",
+                "-ljsoncpp"
 			],
 			"options": {
 				"cwd": "${fileDirname}"
